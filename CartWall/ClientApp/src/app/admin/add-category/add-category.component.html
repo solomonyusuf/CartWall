@@ -1,0 +1,22 @@
+<div class="row">
+<div class="col-3">
+  <sidebar></sidebar>
+</div>
+<div class="col-9">
+  <div class="row">
+    <div class="col" align="center" style="margin-top:80px;">
+      <section  class="contact-clean">
+        <div class="card shadow" style="width:500px;">
+          <div class="card-body">
+            <h2 class="text-center">Add Category</h2>
+            <img class="card-img-top" *ngIf="result" src="{{result.dbPath}}" width="300px" height="400px" />
+           <upload style="margin:5px;" (onUploadFinished)="getImg($event)"></upload>
+            <div class="mb-3"><input class="form-control" type="text" name="Name"[(ngModel)]="category.Name" placeholder="Category Name"></div>
+            <div class="mb-3"><button class="btn btn-primary" type="submit" (click)="Submit()">send </button></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+</div>

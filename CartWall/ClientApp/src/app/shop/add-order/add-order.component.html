@@ -1,0 +1,161 @@
+<div style=" margin: 5px; margin-top: 100px;">
+  <lib-toastify-toast-container></lib-toastify-toast-container>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1"><i class="fa fa-list-alt" style="color: var(--bs-purple);"></i></a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link " role="tab" data-bs-toggle="tab" href="#tab-2"><i class="fa fa-barcode" style="color: var(--bs-purple);"></i></a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3"><i class="fa fa-credit-card" style="color: var(--bs-purple);"></i></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" role="tabpanel" id="tab-1">
+      <div align="center" class="card shadow" style=" margin: 10px;">
+        <div class="card-body">
+          <h2 class="text-center">Billing Details</h2>
+          <strong align="center">1 of 3</strong><br />
+          <div class="mb-3">
+            <input #firstName="ngModel" class="form-control" required minlength="3" maxlength="15" type="text" [(ngModel)]="order.firstName" name="firstName" placeholder="First Name">
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+              <div *ngIf="firstName.errors.required">First Name is required</div>
+              <div *ngIf="firstName.errors.minlength">First Name is minimum 3 Characters </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input class="form-control" type="text" #lastName="ngModel" required minlength="3" maxlength="15" [(ngModel)]="order.lastName" name="lastName" placeholder="Last Name">
+            <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+              <div *ngIf="lastName.errors.required">Last Name is required</div>
+              <div *ngIf="lastName.errors.minlength">Last Name is minimum 3 Characters </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" type="text" #address_1="ngModel" required minlength="10" maxlength="35" [(ngModel)]="order.address_1" name="address_1" placeholder="Address 1">
+            <div class="alert alert-danger" *ngIf="address_1.touched && !address_1.valid">
+              <div *ngIf="address_1.errors.required">Address 1 is required</div>
+              <div *ngIf="address_1.errors.minlength">Address 1 is minimum 10 Characters </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" type="text" #address_2="ngModel" required minlength="10" maxlength="35" [(ngModel)]="order.address_2" name="address_2" placeholder="Address 2">
+            <div class="alert alert-danger" *ngIf="address_2.touched && !address_2.valid">
+              <div *ngIf="address_2.errors.required">Address 2 is required</div>
+              <div *ngIf="address_2.errors.minlength">Address 2 is minimum 10 Characters </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" type="text" required #phoneNumber_1="ngModel" minlength="11" maxlength="15" [(ngModel)]="order.phoneNumber_1" name="phoneNumber_1" placeholder="Phone Number 1">
+            <div class="alert alert-danger" *ngIf="phoneNumber_1.touched && !phoneNumber_1.valid">
+              <div *ngIf="phoneNumber_1.errors.required">Phone Number_1 is required</div>
+              <div *ngIf="phoneNumber_1.errors.minlength">Phone Number_1 is minimum 11 Characters </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" type="text" required #phoneNumber_2="ngModel" minlength="11" maxlength="15" [(ngModel)]="order.phoneNumber_2" name="phoneNumber_2" placeholder="Phone Number 2">
+            <div class="alert alert-danger" *ngIf="phoneNumber_2.touched && !phoneNumber_2.valid">
+              <div *ngIf="phoneNumber_2.errors.required">Phone Number_2 is required</div>
+              <div *ngIf="phoneNumber_2.errors.minlength">Phone Number_2 is minimum 11 Characters </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" role="tab" role="tabpanel" id="tab-2">
+
+      <div class="col-lg-6">
+        <strong align="center">2 of 3</strong>
+        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+        <div class="p-4">
+          <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>{{total|currency:'USD'}}</strong></li>
+            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$00.00</strong></li>
+            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$00.00</strong></li>
+            <li class="d-flex justify-content-between py-3 border-bottom">
+              <strong class="text-muted">Total</strong>
+              <h5 class="font-weight-bold">{{total|currency:'USD'}}</h5>
+            </li>
+          </ul>
+        </div>
+      </div>
+       </div>
+
+
+    <div class="tab-pane" role="tabpanel" id="tab-3">
+      <div class="row .payment-dialog-row">
+        <div class="col-md-12">
+          <div class="card credit-card-box">
+            <div class="card-header">
+              <h3><span class="panel-title-text" style="color: purple;">Payment Details </span><img class="img-fluid panel-title-image" src="/assets/img/accepted_cards.png"></h3>
+              <strong align="center">3 of 3</strong><br/>&nbsp;
+              <small><i>Note :</i> your card details will not be debited but will be kept for security purpose and policy. </small>
+            </div>
+
+            <div class="card-body">
+              <form id="payment-form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <label class="form-label" for="cardNumber">Card number </label>
+                      <div class=" form-group">
+                        <input class="form-control" required #cardNo="ngModel" minlength="11" maxlength="11" [(ngModel)]="card.cardNo" name="cardNo" type="tel" id="cardNumber" placeholder="Valid Card Number">
+                        <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
+                      </div>
+                      <div class="alert alert-danger" *ngIf="cardNo.touched && !cardNo.valid">
+                        <div *ngIf="cardNo.errors.required">Card No is required</div>
+                        <div *ngIf="cardNo.errors.minlength">Card No is 11 Characters </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-7">
+                    <div class="mb-3">
+                      <label class="form-label" for="cardExpiry"><span>Expiration </span><span>EXP </span> date</label>
+                      <input class="form-control" required #cardDate="ngModel" minlength="5" maxlength="5" [(ngModel)]="card.cardDate" name="cardDate" type="tel" id="cardExpiry" placeholder="MM / YY" />
+                      <div class="alert alert-danger" *ngIf="cardDate.touched && !cardDate.valid">
+                        <div *ngIf="cardDate.errors.required">Card Date is required</div>
+                        <div *ngIf="cardDate.errors.minlength">Card Date is 5 Characters </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-5 pull-right">
+                    <div class="form-group mb-3">
+                      <label class="form-label">CV code</label>
+                      <input class="form-control"required #cardCode="ngModel" minlength="3" maxlength="3" [(ngModel)]="card.cardCode" name="cardCode" type="tel" id="cardCVC" placeholder="CVC">
+                      <div class="alert alert-danger" *ngIf="cardCode.touched && !cardCode.valid">
+                        <div *ngIf="cardCode.errors.required">Card Code is required</div>
+                        <div *ngIf="cardCode.errors.minlength">Card Code is 3 Characters </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group mb-3">
+                      <label class="form-label">Card Type</label>
+                      <select class="form-control" required #cardType="ngModel" minlength="4" maxlength="8"[(ngModel)]="card.cardType" name="cardType" type="text" placeholder="Card Type">
+                        <option selected="selected">-----Choose Card Type----</option>
+                        <option value="Verve">Verve</option>
+                      <option value="MasterCard">MasterCard</option>
+                      <option value="Visa">Visa</option>
+                      <option value="Others">Others</option>
+                      </select>
+                      <div class="alert alert-danger" *ngIf="cardType.touched && !cardType.valid">
+                        <div *ngIf="cardType.errors.required">Card Type is required</div>
+                        <div *ngIf="cardType.errors.minlength">Card Type is 4 Characters </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><br/>
+                <div class="row">
+                  &nbsp;<small>Orders will be acknowledge within 6hrs -7hrs of placing them.</small><br/>
+                  <div class="col-12"><button class="btn btn-outline-success rounded-pill d-block w-100" type="submit"
+                                        [disabled]="!cardNo.valid && !cardDate.valid && !cardCode.valid && !cardType.valid"
+                                        (click)="addOrder()">Make Order</button></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>

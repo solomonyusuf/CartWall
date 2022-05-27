@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-3">
+    <sidebar></sidebar>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div class="col" style="margin-top:90px;">
+        <div class="container-fluid">
+          <h3 class="text-dark mb-4">Database Roles&nbsp;<a class="btn btn-outline-primary" routerLink="/add/role">Add Role</a></h3>
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <p class="text-primary m-0 fw-bold">Role Info</p>
+            </div>
+            <div class="card-body">
+
+              <div class="col-md-6">
+                <br />
+                <div><label class="form-label"><input type="search" name="value" [(ngModel)]="value" (ngModelChange)="search()" class="form-control" aria-controls="dataTable" placeholder="Search for Role"></label></div>
+              </div>
+
+              <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                  
+                  <tbody>
+                    <tr *ngFor="let r of role ">
+                      <td>{{r.name}}</td>
+                      <td>{{r.normalizename}}</td>
+                      <td><a class="btn btn-outline-success" routerLink="/add/user/role/{{r.name}}/{{r.id}}">Add User</a></td>
+                      <td><a class="btn btn-outline-primary" routerLink="/edit/role/{{r.id}}">Edit</a></td>
+                      <td><a class="btn btn-outline-danger" (click)="Delete(r.id)">Delete</a></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

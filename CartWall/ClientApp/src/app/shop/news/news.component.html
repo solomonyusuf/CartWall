@@ -1,0 +1,21 @@
+<div   style="margin-top:100px;margin:3px;">
+    <h3 align="center"><i>Latest News</i></h3>
+     <div class="row">
+       <div class="col">
+         <div class="col-sm-4"  *ngFor="let n of news">
+           <div class="card shadow"style="width: 300px;">
+             <p><i><label>&nbsp;Date: </label><small> {{n.timeStamp}}</small></i></p>
+             <img class="card-img-top" src="{{n.imgPath}}" style="width:293px;" alt="Card image cap">
+             <div class="card-body">
+               <p class="card-title" style=" color:purple; font-size: 18px;font-weight: bolder;color: brown;font-style: italic;">
+                 {{n.title}}
+               </p>
+               <hr />
+               <p class="card-text">{{n.body}}</p><br />
+             </div>
+           </div>
+           <br />
+         </div>
+       </div>
+    </div>
+  </div>

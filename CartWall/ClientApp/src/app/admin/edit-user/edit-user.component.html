@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-3">
+    <sidebar></sidebar>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="col" style="margin-top:100px;" *ngIf="user">
+        <div class="container-fluid" >
+          <h3 class="text-dark mb-4">User Profile</h3>
+          <div class="row mb-3">
+            <div class="col-lg-4">
+              <div class="card mb-3">
+                <div class="card-body text-center shadow">
+                  <img class="rounded-circle mb-3 mt-4" src="{{user.imgPath}}" width="160" height="160">
+                </div>
+              </div>
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="text-primary fw-bold m-0">Shopping Cart</h6>
+                </div>
+                <div class="card-body">
+                  <table align="center">
+                    <tbody>
+                      <tr *ngFor="let s of user.shoppingCarts" class="" style="margin:20px;">
+                        <td class="md-3"><img class="rounded-circle me-2" width="30" height="30" src="{{user.imgPath}}"></td>
+                        <td class="md-3">{{s.shoppingCartId}}&nbsp;&nbsp;</td>
+                        <td class="md-3">|&nbsp;{{s.timeStamp}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="row mb-3 d-none">
+                <div class="col">
+                  <div class="card textwhite bg-primary text-white shadow">
+                    <div class="card-body">
+                      <div class="row mb-2">
+                        <div class="col">
+                          <p class="m-0">Peformance</p>
+                          <p class="m-0"><strong>65.2%</strong></p>
+                        </div>
+                        <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                      </div>
+                      <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card textwhite bg-success text-white shadow">
+                    <div class="card-body">
+                      <div class="row mb-2">
+                        <div class="col">
+                          <p class="m-0">Peformance</p>
+                          <p class="m-0"><strong>65.2%</strong></p>
+                        </div>
+                        <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                      </div>
+                      <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="card shadow mb-3">
+                    <div class="card-header py-3">
+                      <p class="text-primary m-0 fw-bold">User Settings</p>
+                    </div>
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label>
+                            <input class="form-control" type="text" id="username" [(ngModel)]="model.userName" value="{{user.userName}}" name="userName"></div>
+                          </div>
+                          <div class="col">
+                            <div class="mb-3"><label class="form-label" for="email"><strong>Role</strong></label>
+                            <input class="form-control" type="email" id="email"[(ngModel)]="model.role" value="{{user.role}}" name="role"></div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3"><label class="form-label"><strong>Phone Number</strong></label>
+                            <input class="form-control" type="text"[(ngModel)]="model.phoneNumber" name="phoneNumber" value="{{user.phoneNumber}}" ></div>
+                          </div>
+                          <div class="col">
+                            <div class="mb-3"><label class="form-label"><strong>User ID</strong></label>
+                            <input class="form-control" type="text" id="last_name" disabled="disabled" value="{{user.id}}"></div>
+                          </div>
+                        </div>
+                        <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" (click)="submit()">Save Settings</button></div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="card shadow">
+                    <div class="card-header py-3">
+                      <p class="text-primary m-0 fw-bold">Order Details</p>
+                    </div>
+                    <div class="card-body">
+                      <table align="center" class="table table-bordered">
+                        <tbody>
+                          <tr *ngFor="let o of user.orders" class="" style="margin:20px;">
+                            <td class="md-3"><img class="rounded-circle me-2" width="30" height="30" src="{{user.imgPath}}"></td>
+                            <td>{{o.status}}</td>
+                            <td>{{o.timeStamp}}</td>
+                            <td><button class="btn btn-outline-danger" (click)="Delete(o.orderId)"><i class="fa fa-remove"></i></button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

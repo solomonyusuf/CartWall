@@ -1,0 +1,197 @@
+
+<div class="row">
+  <div class="col-3">
+    <sidebar></sidebar>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="col-9" style="margin-top:90px;">
+        <div class="container-fluid">
+          <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-dark mb-0">Dashboard</h3>&nbsp;<a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" style="background: var(--bs-warning);"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-primary py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="totalCost"><span>{{totalCost |currency:'USD'}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-success py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="totalCost"><span>{{totalCost |currency:'USD'}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-info py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-info fw-bold text-xs mb-1" style="border-color: var(--bs-blue);"><span style="border-color: var(--bs-indigo);">Messages</span></div>
+                      <div class="row g-0 align-items-center">
+                        <div class="col-auto">
+                          <div class="text-dark fw-bold h5 mb-0 me-3"><span *ngIf="contact">{{contact.length}}</span></div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm">
+                            <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="visually-hidden">50%</span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-warning py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Pending Orders</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="pending">{{pending.length}}</div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-primary py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>total purchases</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="orders"><span>{{orders.length}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-hockey-puck fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-success py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>total products</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="products"><span>{{products.length}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fab fa-product-hunt fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-info py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>total cards</span></div>
+                      <div class="row g-0 align-items-center">
+                        <div class="col-auto">
+                          <div class="text-dark fw-bold h5 mb-0 me-3" *ngIf="card"><span>{{card.length}}</span></div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm">
+                            <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="visually-hidden">50%</span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-credit-card fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-warning py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>total Carts</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="cart"><span>{{cart.length}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fab fa-opencart fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-warning py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>total Users</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="users"><span>{{users.length}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fas fa-user-friends fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-warning py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>total Categories</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="category"><span>{{category.length}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="far fa-list-alt fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-warning py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Sucessfull Orders</span></div>
+                      <div class="text-dark fw-bold h5 mb-0" *ngIf="orders"><span>{{delivered.length}}</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fa fa-list-alt fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+              <div class="card shadow border-start-warning py-2">
+                <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col me-2">
+                      <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>total Visitors</span></div>
+                      <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                    </div>
+                    <div class="col-auto"><i class="fa fa-tripadvisor fa-2x text-gray-300"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

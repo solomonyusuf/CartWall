@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-3">
+    <sidebar></sidebar>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div style=" margin: 5px; margin-top: 100px;">
+        <ul class="nav nav-tabs btn d-block btn-warning" role="tablist">
+          <li class="nav-item" role="presentation"><a class="nav-link active btn btn-info" role="tab" data-bs-toggle="tab" href="#tab-1">Users in role</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link btn btn-info " role="tab" data-bs-toggle="tab" href="#tab-2">Add users to role</a></li>
+
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" role="tabpanel" id="tab-1">
+
+            <div class="col" style="margin-top:80px;">
+              <div class="container-fluid">
+                <h3 class="text-dark mb-4">{{name}} Role</h3>
+                <div class="card shadow">
+                  <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">{{name}} Info</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                      <table class="table my-0" id="dataTable">
+                        <tbody>
+                          <tr *ngFor="let u of user ">
+                            <td><a class="text-dark" routerLink="/edit/user/{{u.id}}"><img class="rounded-circle me-2" width="30" height="30" src="{{u.imgPath}}" />{{u.userName}}</a></td>
+
+                            <td><a class="btn btn-outline-danger" (click)="Delete(u.id)">Remove</a></td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" role="tabpanel" id="tab-2">
+
+            <div class="col-lg-6">
+              <div align="center" class="card shadow" style=" margin: 10px;">
+                <div class="card-body">
+                  <h2 class="text-center">Add User to Role</h2>
+                  <div class="mb-3"><input class="form-control" type="text" [(ngModel)]="userRole.userId" name="userId" placeholder=" Enter UserId"></div>
+
+                  <div class="mb-3"><button class="btn btn-primary" (click)="submit()">Send</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

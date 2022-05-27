@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using CartWall.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    string returnUrl = null;
+    var query = ViewContext.HttpContext.Request.Query;
+    if (query.ContainsKey("returnUrl"))
+    {
+        returnUrl = query["returnUrl"];
+    }
+}
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item"style="margin:5px;">
+            <a class=" btn-default" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i>Hello @User.Identity.Name!</i></a>
+        </li>
+        <li class="nav-item" style="margin:5px;">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/">
+                <button type="submit" class=" btn btn-outline-danger"><i>Logout</i></button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item"style="margin:5px;">
+            <a class=" btn btn-outline-success" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@returnUrl"><i>Register</i></a>
+        </li>
+        <li class="nav-item"style="margin:5px;">
+            <a class="btn btn-outline-primary" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl"><i>Login</i></a>
+        </li>
+    }
+</ul>

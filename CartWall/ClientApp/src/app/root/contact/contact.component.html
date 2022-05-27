@@ -1,0 +1,72 @@
+<div align="center" style=" margin:5px;margin-top: 80px;margin-bottom:15px; " class="card shadow">
+  <div class="card-body">
+    <div class="container-fluid">
+      <hr />
+      <div class="row">
+        <div class="col-12 col-md-6" id="message-1">
+          <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us</h2>
+          <div class="form-group mb-3">
+           <lib-toastify-toast-container></lib-toastify-toast-container>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa fa-user-o"></i></span>
+              <input class="form-control" type="text" id="from-name-1" [(ngModel)]="contact.fullName" name="fullName" required="" placeholder="Full Name" />
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+              <input class="form-control" type="text" [(ngModel)]="contact.email" name="email" required="" placeholder="Email Address">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group mb-3">
+            
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                <input class="form-control" type="text" [(ngModel)]="contact.phoneNumber" id="from-phone-1" name="phoneNumber" required="" placeholder="Primary Phone">
+              </div>
+            </div>
+
+
+          </div>
+          <div class="form-group mb-3">
+         
+            <textarea class="form-control" id="from-comments-1" [(ngModel)]="contact.message" name="message" placeholder="Enter Comments" rows="5"></textarea>
+          </div>
+          <div class="form-group mb-3">
+            <div class="row">
+              <div class="col"><button class="btn btn-primary d-block w-100" (click)="submit()" type="submit">Submit <i class="fa fa-chevron-circle-right"></i></button></div>
+            </div>
+          </div>
+        </div>
+        <hr class="d-flex d-md-none">
+      </div>
+      <div class="col-12 col-md-6">
+        <h2 class="h4"><i class="fa fa-location-arrow"></i> Locate Us</h2>
+        <div class="row">
+          <div class="col-12">
+            <div class="static-map"><a rel="noopener" href="https://www.google.com/maps/place/Daytona+International+Speedway/@29.1815062,-81.0744275,15z/data=!4m13!1m7!3m6!1s0x88e6d935da1cced3:0xa6b3e1bc0f2fc83a!2s1801+W+International+Speedway+Blvd,+Daytona+Beach,+FL+32114!3b1!8m2!3d29.187028!4d-81.0703076!3m4!1s0x88e6d949a4cb8593:0x1387c6c0b5c8cc97!8m2!3d29.1851681!4d-81.0705292" target="_blank"> <img class="img-fluid" src="http://maps.googleapis.com/maps/api/staticmap?autoscale=2&amp;size=600x210&amp;maptype=roadmap&amp;format=png&amp;visual_refresh=true&amp;markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C582+1801+W+International+Speedway+Blvd+Daytona+Beach+FL+32114&amp;zoom=12" alt="Google Map of Daytona International Speedway"></a></div>
+          </div>
+          <div class="col-sm-6 col-md-12 col-lg-6">
+            <h2 class="h4"><i class="fa fa-user"></i> Our Info</h2>
+            <div><span><strong>Name</strong></span></div>
+            <div><span>email@cartwall.com</span></div>
+            <div><span>www.awebsite.com</span></div>
+            <hr class="d-sm-none d-md-block d-lg-none">
+          </div>
+          <div class="col-sm-6 col-md-12 col-lg-6">
+            <h2 class="h4"><i class="fa fa-location-arrow"></i> Our Address</h2>
+            <div><span><strong>CartWall</strong></span></div>
+            <div><span>6, akiniyi close</span></div>
+            <div><span>Shasha, Egbeda</span></div>
+            <div><abbr data-toggle="tooltip" data-placement="top" title="Office Phone: 555-867-5309">O:</abbr> +2348093723842</div>
+            <hr class="d-sm-none">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+  

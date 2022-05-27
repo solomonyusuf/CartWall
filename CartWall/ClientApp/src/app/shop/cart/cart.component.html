@@ -1,0 +1,81 @@
+
+<h3 style=" margin: 5px; margin-top: 100px;" *ngIf="!cartId" align="center">{{message}}</h3>
+<div class="card shadow justify-content-center" *ngIf="cart as data" style=" margin:5px;margin-top: 80px;margin-bottom:15px; ">
+  <div class="card-body">
+    <lib-toastify-toast-container></lib-toastify-toast-container>
+    <h1>Shopping Cart</h1>
+    <div class="row ">
+      <p *ngIf="cartIntitialize(data.products.length)">
+        You have {{ data.products.length }} items in your shopping cart.
+      </p>
+      <table class="table shadow table-responsive table-bordered">
+        <thead>
+          <tr>
+            <th align="center" class="text-center">Product</th>
+            <th class="text-center" style="width: 230px">Quantity</th>
+            <th align="center" class="text-center" style="width: 200px">Price</th>
+            <th align="center" class="text-center">Total Cost</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of data.products">
+
+            <td style="margin:3px;">
+              <img src="{{p.imgPath}}" class="card-img-top" style="width: 50px; height: 50px; border-radius: 25px;" />&nbsp; {{ p.productName }}
+            </td>
+            <td>
+              <div class="row justify-content-center no-gutters" align="center" style="margin-right:3px;">
+                <div class="col-2">
+                  <button align="center" (click)="decrease(p.collectId,p.quantity,p.price,p.imgPath,p.productName)" class="btn btn-secondary btn-sm">
+                    -
+                  </button>
+                </div>
+                <div class="col text-center" *ngIf="quantity( p.quantity)">
+                  {{ p.quantity }}
+                </div>
+                <div class="col-2">
+                  <button align="center" (click)="increase(p.collectId,p.quantity,p.price,p.imgPath,p.productName)" class="btn btn-secondary btn-sm">
+                    +
+                  </button>
+                </div>
+              </div>
+            </td>
+            <td class="text" align="center">
+              {{ p.price|currency:'USD' }}
+            </td>
+            <td>
+              <div align="center">
+                <h6><strong>{{p.amount|currency:'USD'}}</strong></h6>
+
+              </div>
+
+            </td>
+            <td style="margin:3px;">
+              <button class="btn btn-danger" (click)="remove(p.collectId,p.productId)"><i class="fa fa-remove"></i></button>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th></th>
+            <td align="center">{{Qty}}</td>
+            <th></th>
+            <th align="center" hidden="hidden">{{focus}}</th>
+            <td align="center" *ngIf="total()"><h5><strong>{{totalCost|currency:'USD'}}</strong></h5></td>
+          </tr>
+        </tfoot>
+      </table>
+      <!-- <button class="btn btn-danger btn-sm" (click)="clear()">
+        Clear Shopping Cart
+      </button>--->
+      <a align="center" class="btn btn-outline-primary btn-sm" routerLink="/add/order/{{data.shoppingCartId}}">
+        Proceed to Make Order
+      </a>
+    </div>
+    <br />
+  </div>
+</div>
+

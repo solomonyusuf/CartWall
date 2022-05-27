@@ -1,0 +1,68 @@
+@using Microsoft.AspNetCore.Hosting
+@using Microsoft.AspNetCore.Mvc.ViewEngines
+@inject IWebHostEnvironment Environment
+@inject ICompositeViewEngine Engine
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CartWall</title>
+   <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="~/assets/fonts/fontawesome-all.min.css">
+  <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="~/assets/fonts/fontawesome5-overrides.min.css">
+  <link rel="stylesheet" href="~/assets/css/Contact-Form-Clean.css" />
+  <style>
+      h1,h2,h3{color:purple;font-style:italic;}
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light navbar-toggleable-sm bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="~/"><h1 style="text-align: center;font-weight: bold;font-style: italic;color: var(--bs-warning);"><i class="fas fa-blog"></i>&nbsp;CartWall</h1></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    @{
+                        var result = Engine.FindView(ViewContext, "_LoginPartial", isMainPage: false);
+                    }
+                    @if (result.Success)
+                    {
+                        await Html.RenderPartialAsync("_LoginPartial");
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("The default Identity UI layout requires a partial view '_LoginPartial' " +
+                            "usually located at '/Pages/_LoginPartial' or at '/Views/Shared/_LoginPartial' to work. Based on your configuration " +
+                            $"we have looked at it in the following locations: {System.Environment.NewLine}{string.Join(System.Environment.NewLine, result.SearchedLocations)}.");
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="footer footer-sticky text-muted">
+        <div class="container">
+            &copy; 2022 - CartWall| Solomon Yusuf - <a asp-area="" asp-page="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/Identity/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Identity/js/site.js" asp-append-version="true"></script>
+  <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="~/assets/js/chart.min.js"></script>
+  <script src="~/assets/js/bs-init.js"></script>
+  <script src="~/assets/js/theme.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

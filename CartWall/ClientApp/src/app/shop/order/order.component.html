@@ -1,0 +1,29 @@
+<div class="container" *ngIf="user" style="margin-top: 90px;margin-bottom:15px; ">
+  <lib-toastify-toast-container></lib-toastify-toast-container>
+  <div class="container-fluid">
+    <h2 class=" mb-4">Personal Orders&nbsp;</h2>
+    <small>Orders will be acknowledge within 6hrs -7hrs of placing them.</small>
+    <div class="card shadow" style="width:stretch;">
+      <div class="card-header py-3">
+        <p class="text-primary m-0 fw-bold">Orders Info</p>
+      </div>
+      
+      <div class="card-body">
+        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+          <table align="center" class="table my-0" id="dataTable">
+            <tbody>
+              <tr *ngFor="let o of user.orders" style="margin:20px;">
+                <td class="md-3"><img class="rounded-circle me-2" width="30" height="30" src="{{user.imgPath}}"></td>
+                <td>{{o.status}}</td>
+                <td>{{o.timeStamp}}</td>
+                <td><button class="btn btn-outline-danger" (click)="Delete(o.orderId)"><i class="fa fa-remove"></i></button></td>
+              </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

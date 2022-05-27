@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-3">
+    <sidebar></sidebar>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="col" style="margin-top: 90px;margin-bottom:15px; ">
+        <div class="container-fluid">
+          <div class="card shadow" align="center" style="width:500px;">
+            <div class="card-body" style="margin:15px;">
+              <h2 class="text-center">Add News</h2>
+              <img class="card-img-top" *ngIf="!result" src="{{img}}" width="300px" height="400px" style="margin:8px;"/>
+              <img class="card-img-top" *ngIf="result" src="{{result.dbPath}}" width="300px" height="400px" style="margin:8px;" />
+              <upload align="center" (onUploadFinished)="getImg($event)"></upload>
+              <div class="mb-3"><input class="form-control" type="text" name="Title" [(ngModel)]="news.Title" placeholder=" Title"></div>
+              <div class="mb-3"><textarea class="form-control" type="text" name="Body" [(ngModel)]="news.Body" placeholder="Body"></textarea></div>
+              <div class="mb-3"></div>
+              <div class="mb-3" align="center"><button class="btn btn-primary btn-lg" (click)="Submit()" type="submit">send </button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

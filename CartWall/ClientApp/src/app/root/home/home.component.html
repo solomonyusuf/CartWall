@@ -1,0 +1,32 @@
+
+<div style="margin-top:90px;">
+  <form class=" me-auto form-group col-md-12 navbar-search">
+    <div class="input-group"><input class="bg-light form-control border-1"  type="search" name="value" [(ngModel)]="value" (ngModelChange)="search()" placeholder="Search for Product Name  ..."><button class="btn btn-primary py-0" type="button" style="background: var(--bs-warning);"><i class="fas fa-search"></i></button></div>
+  </form>
+  <div align="center"  style="margin-bottom:15px; ">
+    <div align="center">
+      <lib-toastify-toast-container></lib-toastify-toast-container>
+      <div class="row">
+        <h3 align="center"></h3>
+        <div class="col" *ngFor="let p of products">
+          <div class="col-sm-3" align="center">
+            <div class="card shadow" w-50 style="width:300px;margin:10px;">
+              <div class="card-body" align="center" *ngIf="initializeProduct(p.productId)">
+                <img src="{{p.imgPath}}" class="card-img-top" style="width: 200px; height: 200px; border-radius: 150px;" />
+                <p align="center" class="lead">{{p.productName}}</p>
+                <p align="center" class="">{{p.price|currency:'USD'}}</p>
+                <p align="center" class="">Stock: {{p.stock}}</p>
+                <div *ngIf="isAuthenticated | async">
+                  <button align="center" class="btn btn-outline-success" *ngIf="!intialized" (click)="AddToCart(p.productId,p.imgPath,p.productName,p.price)">Add to Cart</button>
+                  <button align="center" *ngIf="intialized" class="btn btn-secondary">Already in cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

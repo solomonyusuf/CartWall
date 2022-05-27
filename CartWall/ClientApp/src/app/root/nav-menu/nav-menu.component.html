@@ -1,0 +1,65 @@
+<header>
+  <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar fixed-top">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']"><i class="fas fa-blog" style="transform: rotate(14deg);font-size: 32px;color: var(--bs-warning);"></i></a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item nav-link"
+              style=" margin-right:25px;margin-top:12px;"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <div class="dropdown">
+              <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown"><i class="fas fa-th-large" style="font-size: 32px; margin: 3px; color: var(--bs-purple);"></i></a>
+              <div class="dropdown-menu">
+                <ul>
+                  <h6>Categories</h6>
+                  <ul *ngFor="let d of data " class="text-white" style="background-color:purple;">                   
+                    <li><a class="dropdown-item text-white" href="/category/{{d.categoryId}}"><strong><i>{{d.name}}</i></strong></a></li>
+                  </ul>
+                  <li class="nav-item" *ngIf="isAuthenticated | async" [routerLinkActive]="['link-active']">
+                    <a class="nav-link text-dark" routerLink='/order/{{userId}}'>
+                      <i class="far fa-list-alt" style="font-size: 30px; color: var(--bs-purple);">
+                      </i>&nbsp; Orders
+                    </a>
+                  </li>
+                  <li class="nav-item"
+                      [routerLinkActive]="['link-active']"
+                      [routerLinkActiveOptions]="{ exact: true }">
+                    <a class="nav-link text-dark" [routerLink]="['/news']"><i class="far fa-bell" style="font-size: 30px; color: var(--bs-purple);"></i>&nbsp;News</a>
+                  </li>
+                  
+                  <li class="nav-item" [routerLinkActive]="['link-active']">
+                    <a class="nav-link text-dark" [routerLink]="['/contact']"><i class="fa fa-phone-square" style="font-size: 32px; margin: 5px; color: var(--bs-purple);"></i> &nbsp;Contact</a>
+                  </li>
+                </ul>
+                
+              </div>
+            </div>
+          </li>
+          <li class="nav-item" *ngIf="isAuthenticated | async" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" routerLink="/cart/{{id}}">
+
+              <span class="badge badge-warning badge-pill" *ngIf="cart">{{cart.products.length }}</span>
+              <i class="fa fa-shopping-cart" style="font-size: 30px;color: var(--bs-purple);"></i>
+            </a>
+          </li>
+          
+
+        </ul>
+        <app-login-menu></app-login-menu>
+      </div>
+    </div>
+  </nav>
+
+</header>

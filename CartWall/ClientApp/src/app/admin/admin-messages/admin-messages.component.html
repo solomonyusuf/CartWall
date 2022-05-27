@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-3">
+    <sidebar></sidebar>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div class="col" style="margin-top:80px;">
+        <div class="container-fluid">
+          <h3 class="text-dark mb-4">Database Messages</h3>
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <p class="text-primary m-0 fw-bold">Messages Info</p>
+            </div>
+            <div class="card-body">
+
+              <div class="col-md-6">
+                <br />
+                <div><label class="form-label"><input class="form-control" aria-controls="dataTable" type="search" name="value" [(ngModel)]="value" (ngModelChange)="search()" placeholder="Search by date"></label></div>
+              </div>
+
+              <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                  <tbody>
+                    <tr *ngFor="let c of contact ">
+
+                      <td>{{c.fullName}}</td>
+                      <td>{{c.phoneNumber}}</td>
+                      <td>{{c.email}}</td>
+                      <td>{{c.message}}</td>
+                      <td>{{c.timeStamp}}</td>
+                      <td><a class="btn btn-outline-danger" (click)="Delete(c.id)">Delete</a></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
